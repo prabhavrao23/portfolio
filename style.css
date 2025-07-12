@@ -1,0 +1,755 @@
+/* General Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #000000; /* Pitch black background */
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin-left: 80px; /* Space for the fixed side navigation */
+    overflow: hidden; /* **CRUCIAL: Disables scrolling for the single-page effect** */
+    height: 100vh; /* Ensure body takes full viewport height */
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+    color: #f0f0f0;
+}
+
+a {
+    color: #228B22; /* Forest Green accent */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #1e7a1f; /* Slightly darker Forest Green on hover */
+}
+
+/* Side Navigation */
+.side-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 100%;
+    background-color: #1a1a1a; /* Very dark grey for side nav */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.side-nav .initials {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #228B22; /* Forest Green accent */
+    margin-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.side-nav .nav-text {
+    color: white;
+    text-decoration: none;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+    padding: 0.5rem 0;
+}
+
+.side-nav .nav-text:hover {
+    color: #228B22; /* Forest Green accent */
+}
+
+.side-nav .social-icons {
+    margin-top: auto;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.side-nav .social-icons a {
+    color: #e0e0e0;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.side-nav .social-icons a:hover {
+    color: #228B22; /* Forest Green accent */
+}
+
+/* Main Sections (for single-page navigation) */
+section {
+    position: absolute;
+    top: 0;
+    left: 80px;
+    width: calc(100% - 80px);
+    height: 100vh;
+    display: none;
+    padding: 4rem 2rem;
+    overflow-y: auto;
+    transition: opacity 0.5s ease;
+    opacity: 0;
+    z-index: 1;
+    background-color: #000000; /* Ensure sections have pitch black background */
+}
+
+section.active-section {
+    display: block; /* For general sections like About, Portfolio, Contact */
+    opacity: 1;
+    z-index: 2;
+}
+
+/* Hero Section Specifics - Now a two-column layout */
+#hero {
+    display: flex; /* Flex container for left and right columns */
+    padding: 0; /* Remove padding as columns will manage their own spacing */
+}
+
+.hero-left-column {
+    flex: 1; /* Takes half width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem; /* Internal padding */
+    background-color: #000000; /* Pitch black for the left column */
+    color: white;
+}
+
+.hero-right-column {
+    flex: 1; /* Takes half width */
+    background-size: cover;
+    background-position: center;
+    position: relative; /* For potential overlay */
+    background-color: #1a1a1a; /* Fallback for image, or dark base */
+}
+
+/* Removed overlay for brighter image */
+/*
+.hero-right-column::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+*/
+
+/* Hero content box is now just a div, its background removed */
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 0; /* Remove padding here as it's on .hero-left-column now */
+    background-color: transparent; /* Transparent background */
+    border-radius: 0; /* No border-radius */
+    max-width: 100%; /* Take full width of its parent */
+    box-shadow: none; /* No shadow */
+}
+
+#hero h1 {
+    font-size: 4.5rem;
+    margin-bottom: 1rem;
+    color: #228B22; /* Forest Green accent */
+    font-weight: 700;
+}
+
+#hero p {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: #f0f0f0;
+}
+
+.hero-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: #cccccc;
+}
+
+.hero-info span i {
+    margin-right: 0.5rem;
+    color: #228B22; /* Forest Green accent */
+}
+
+.hero-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 2rem auto 0 auto;
+}
+
+.button-primary {
+    display: inline-block;
+    background-color: #228B22; /* Forest Green accent */
+    color: #000000;
+    padding: 0.9rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.button-primary:hover {
+    background-color: #1e7a1f; /* Slightly darker Forest Green on hover */
+    transform: translateY(-3px);
+}
+
+
+/* Section Common Heading Style */
+section h2 {
+    text-align: left;
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: #228B22; /* Forest Green accent */
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translateX(0);
+    width: 80px;
+    height: 4px;
+    background-color: #228B22; /* Forest Green accent */
+    border-radius: 2px;
+}
+
+/* About Section Specifics */
+#about {
+    text-align: left;
+    padding-top: 2rem;
+    display: block;
+}
+
+#about .about-header-container {
+    max-width: 1200px;
+    margin: 0 auto 2rem auto;
+    padding-left: 2rem;
+}
+
+/* Container for all about content rows */
+.about-section-rows-container {
+    max-width: 1200px; /* Overall width */
+    margin: 0 auto; /* Center it */
+    padding: 0 2rem; /* Add horizontal padding to align with header */
+}
+
+/* Each row containing title and description */
+.about-content-row {
+    display: flex; /* Use flexbox for title and description side-by-side */
+    align-items: flex-start; /* Align items to the top of the row */
+    margin-bottom: 2rem; /* Space between rows */
+    gap: 1.5rem; /* Space between title and description, adjusted for alignment */
+    border-bottom: 1px solid #1a1a1a; /* Subtle separator between rows */
+    padding-bottom: 1.5rem; /* Padding below content before border */
+}
+
+.about-content-row:last-child {
+    border-bottom: none; /* No border for the last row */
+    padding-bottom: 0;
+}
+
+.about-row-title {
+    flex: 0 0 250px; /* Fixed width for the title column, adjusted for alignment */
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #e0e0e0;
+    padding-left: 1.5rem; /* Space for the bullet point */
+    position: relative;
+    white-space: nowrap; /* Prevent title from wrapping */
+    cursor: pointer; /* Indicate clickability for the JS toggle */
+    transition: color 0.3s ease;
+}
+
+.about-row-title:hover {
+    color: #228B22; /* Forest Green accent on hover */
+}
+
+.about-row-title::before {
+    content: '\2022'; /* Bullet point */
+    color: #228B22; /* Forest Green accent */
+    font-size: 2rem;
+    position: absolute;
+    left: 0;
+    top: -0.2rem;
+}
+
+.about-row-description {
+    flex-grow: 1; /* Description takes up remaining space */
+    /* This content block is toggled by JS using 'hidden' attribute */
+}
+
+/* Rule to make hidden attribute work */
+.about-row-description[hidden] {
+    display: none;
+}
+/* No need for .active-description class in CSS, JS just removes/adds 'hidden' attribute */
+
+
+/* "A bit about myself" content styling (within about-row-description) */
+.about-row-description ul {
+    list-style: none;
+    padding-left: 0;
+    text-align: left;
+}
+
+.about-row-description ul li {
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 1.5rem;
+    padding-right: 0;
+}
+
+.about-row-description ul li::before {
+    content: '\2022';
+    color: #228B22; /* Forest Green accent */
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: auto;
+}
+
+
+/* Work and Education Item Styling (within about-row-description) */
+.experience-item, .education-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #333;
+}
+.experience-item:last-child, .education-item:last-child {
+    border-bottom: none;
+}
+
+.experience-item h4, .education-item h4 {
+    color: #e0e0e0;
+    margin-bottom: 0.2rem;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.experience-item h4 span, .education-item h4 span {
+    color: #cccccc;
+    font-weight: 400;
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+.experience-item p, .education-item p {
+    font-size: 0.9rem;
+    color: #cccccc;
+    margin-bottom: 0.5rem;
+}
+
+.experience-item ul, .education-item ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0.5rem;
+}
+
+.experience-item ul li, .education-item ul li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.4rem;
+    color: #cccccc;
+    font-size: 0.9rem;
+}
+
+.experience-item ul li::before, .education-item ul li::before {
+    content: '\2022';
+    color: #228B22; /* Forest Green accent */
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Skills Grid (within about-row-description) */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+    max-width: 100%;
+}
+
+.skill-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.skill-icon:hover {
+    transform: translateY(-2px);
+    background-color: #2a2a2a;
+}
+
+.skill-icon i {
+    font-size: 2.2rem;
+    color: #228B22; /* Forest Green accent */
+    margin-bottom: 0.3rem;
+}
+
+.skill-icon p {
+    font-size: 0.75rem;
+    color: #e0e0e0;
+    font-weight: 600;
+    text-align: center;
+}
+
+
+/* Projects Grid (Portfolio) */
+#portfolio {
+    /* Main section styles apply */
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto 0 auto;
+}
+
+.project-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+    background-color: #1a1a1a;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+}
+
+.project-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.1);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    text-align: center;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-overlay h3 {
+    font-size: 1.7rem;
+    margin-bottom: 0.8rem;
+    color: #228B22; /* Forest Green accent */
+}
+
+.project-overlay p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #cccccc;
+}
+
+.project-overlay .view-project-btn {
+    display: inline-block;
+    background-color: #228B22; /* Forest Green accent */
+    color: #000000;
+    padding: 0.7rem 1.8rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.project-overlay .view-project-btn:hover {
+    background-color: #1e7a1f; /* Slightly darker Forest Green on hover */
+}
+
+/* Contact Section */
+#contact {
+    /* Main section styles apply */
+}
+
+.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    max-width: 900px;
+    margin: 2rem auto 0 auto;
+    text-align: left;
+    background-color: #1a1a1a;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+.get-in-touch {
+    flex: 1;
+    min-width: 280px;
+}
+
+.get-in-touch h3 {
+    color: #228B22; /* Forest Green accent */
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.get-in-touch p {
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+
+.get-in-touch a {
+    color: #228B22; /* Forest Green accent */
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.contact-form {
+    flex: 2;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 1rem;
+    border: 1px solid #333;
+    background-color: #000000;
+    color: #e0e0e0;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #aaa;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #228B22; /* Forest Green accent */
+    box-shadow: 0 0 8px rgba(34, 139, 34, 0.4);
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button {
+    background-color: #228B22; /* Forest Green accent */
+    color: #000000;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #1e7a1f; /* Slightly darker Forest Green on hover */
+    transform: translateY(-3px);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background-color: #000000;
+    color: #888;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border-top: 1px solid #333;
+    font-size: 0.9rem;
+    position: relative;
+    width: calc(100% - 80px);
+    left: 80px;
+    z-index: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        margin-left: 0;
+    }
+
+    .side-nav {
+        display: none;
+    }
+
+    section {
+        left: 0;
+        width: 100%;
+        padding: 2rem 1rem;
+    }
+
+    /* Hero section responsive for mobile */
+    #hero {
+        flex-direction: column;
+        padding: 2rem 1rem;
+    }
+    .hero-left-column, .hero-right-column {
+        flex: none;
+        width: 100%;
+    }
+    .hero-right-column {
+        height: 50vh;
+    }
+    .hero-content {
+        padding: 1.5rem 0;
+    }
+
+    section h2 {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    #hero h1 {
+        font-size: 3rem;
+    }
+
+    #hero p {
+        font-size: 1.2rem;
+    }
+
+    .hero-info {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .hero-buttons {
+        grid-template-columns: 1fr;
+        max-width: 250px;
+    }
+
+    /* About Section Responsive */
+    .about-section-rows-container {
+        padding: 0;
+    }
+
+    .about-content-row {
+        flex-direction: column; /* Stack title and description vertically on mobile */
+        align-items: center;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .about-row-title {
+        flex: auto;
+        width: 100%;
+        font-size: 1.5rem;
+        padding-left: 0;
+        white-space: normal;
+    }
+    .about-row-title::before {
+        display: none;
+    }
+
+    .about-row-description {
+        width: 100%;
+        padding: 1rem;
+        text-align: left;
+    }
+    .about-row-description ul {
+        text-align: left;
+    }
+    .about-row-description ul li {
+        padding-left: 1.5rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    }
+
+    .skill-icon i {
+        font-size: 2rem;
+    }
+
+    .skill-icon p {
+        font-size: 0.7rem;
+    }
+
+    .projects-grid, .contact-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    footer {
+        left: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero h1 {
+        font-size: 2.5rem;
+    }
+    #hero p {
+        font-size: 1rem;
+    }
+    .hero-content {
+        padding: 1.5rem 0;
+    }
+}
